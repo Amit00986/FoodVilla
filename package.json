@@ -1,0 +1,29 @@
+{
+  "name": "day3",
+  "version": "1.0.0",
+  "description": "This learning day 3 React",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://https://github.com/Amit00986/React.git"
+  },
+  "author": "Amit",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 10 chrome versions"
+  ]
+}
