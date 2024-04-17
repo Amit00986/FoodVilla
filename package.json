@@ -1,7 +1,7 @@
 {
-  "name": "day3",
+  "name": "foodvilla",
   "version": "1.0.0",
-  "description": "This learning day 3 React",
+  "description": "This is online food delivery panel website",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
