@@ -27514,7 +27514,18 @@ var _config = require("../config");
 var _configDefault = parcelHelpers.interopDefault(_config);
 var _resturantCard = require("./ResturantCard");
 var _resturantCardDefault = parcelHelpers.interopDefault(_resturantCard);
+var _s = $RefreshSig$();
+const filterData = (searchText, resturants)=>{
+    const filterData = resturants.filter((resturant)=>resturant.data.name.includes(searchText));
+    return filterData;
+};
 const Body = ()=>{
+    _s();
+    // const text = "hellow"
+    const [resturants, setResturants] = (0, _react.useState)((0, _configDefault.default));
+    // searchText is a local state variable
+    const [searchText, setSearchText] = (0, _react.useState)() //return [variableName, function to updateThe varibale] to create state variable
+    ;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27524,32 +27535,45 @@ const Body = ()=>{
                         type: "text",
                         className: "search-input",
                         placeholder: "Search",
-                        value: ""
+                        value: searchText,
+                        onChange: (e)=>{
+                            //e.target.value => Whatever you write In Input
+                            setSearchText(e.target.value);
+                        }
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 8,
+                        lineNumber: 22,
                         columnNumber: 17
                     }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {}, void 0, false, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: "search-btn",
+                        onClick: ()=>{
+                            // need to filter the data 
+                            // update the state - resturants variable
+                            const data = filterData(searchText, resturants);
+                            setResturants(data);
+                        },
+                        children: "Search"
+                    }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 9,
+                        lineNumber: 32,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 7,
+                lineNumber: 21,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "resturant-list",
-                children: (0, _configDefault.default).map((resturant)=>{
+                children: resturants.map((resturant)=>{
                     return /*#__PURE__*/ (0, _react.createElement)((0, _resturantCardDefault.default), {
                         ...resturant.data,
                         key: resturant.data.id,
                         __source: {
                             fileName: "src/components/Body.js",
-                            lineNumber: 13,
+                            lineNumber: 42,
                             columnNumber: 28
                         },
                         __self: undefined
@@ -27557,12 +27581,13 @@ const Body = ()=>{
                 })
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 11,
+                lineNumber: 40,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true);
 };
+_s(Body, "XO0F8UFZ2kk5+RzwNiptsK8hyYc=");
 _c = Body;
 exports.default = Body;
 var _c;
