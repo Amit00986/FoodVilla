@@ -27244,6 +27244,12 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _s = $RefreshSig$();
+const loggedInUser = ()=>{
+    // APi Call to authenticate user
+    return false;
+};
 const Title = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
         href: "/",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -27252,22 +27258,24 @@ const Title = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
             src: "https://yt3.ggpht.com/ytc/AKedOLSpK3T_2RxkMYb-pk9oENQB0NvYpeOdXRgQe8i5=s800-c-k-c0x00ffffff-no-rj"
         }, void 0, false, {
             fileName: "src/components/Header.js",
-            lineNumber: 4,
+            lineNumber: 10,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/Header.js",
-        lineNumber: 3,
+        lineNumber: 9,
         columnNumber: 5
     }, undefined);
 _c = Title;
 const Header = ()=>{
+    _s();
+    const [isLoggedIn, setIsLoggedIn] = (0, _react.useState)(true);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "header",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Title, {}, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 14,
+                lineNumber: 22,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27278,48 +27286,65 @@ const Header = ()=>{
                             children: "Home"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 17,
+                            lineNumber: 25,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "About"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 18,
+                            lineNumber: 26,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Contact"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 19,
+                            lineNumber: 27,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             children: "Cart"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 20,
+                            lineNumber: 28,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 16,
+                    lineNumber: 24,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 15,
+                lineNumber: 23,
                 columnNumber: 13
+            }, undefined),
+            // Js Expression only work here there is diff between Expression and statement
+            isLoggedIn ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: (e)=>setIsLoggedIn(false),
+                children: "Logout"
+            }, void 0, false, {
+                fileName: "src/components/Header.js",
+                lineNumber: 33,
+                columnNumber: 30
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: (e)=>setIsLoggedIn(true),
+                children: "Login"
+            }, void 0, false, {
+                fileName: "src/components/Header.js",
+                lineNumber: 33,
+                columnNumber: 94
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 13,
+        lineNumber: 21,
         columnNumber: 9
     }, undefined);
 };
+_s(Header, "AakclCWmQ3QplLC1VmER7TVxRXw=");
 _c1 = Header;
 exports.default = Header;
 var _c, _c1;
@@ -27331,7 +27356,7 @@ $RefreshReg$(_c1, "Header");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27514,19 +27539,55 @@ var _config = require("../config");
 var _configDefault = parcelHelpers.interopDefault(_config);
 var _resturantCard = require("./ResturantCard");
 var _resturantCardDefault = parcelHelpers.interopDefault(_resturantCard);
+var _shimmer = require("./Shimmer");
+var _shimmerDefault = parcelHelpers.interopDefault(_shimmer);
 var _s = $RefreshSig$();
+// Hook -> It is a just a normal function
+// useeffectHook -> it is a hook 
+// 1. loadsPage => Api => Rendered the page
+// 2. rendered the Intail page call the apia nd updateApi
 const filterData = (searchText, resturants)=>{
-    const filterData = resturants.filter((resturant)=>resturant.data.name.includes(searchText));
+    const filterData = resturants.filter((resturant)=>resturant?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
     return filterData;
 };
 const Body = ()=>{
     _s();
+    const [allResturnats, setAllResturnats] = (0, _react.useState)([]);
     // const text = "hellow"
-    const [resturants, setResturants] = (0, _react.useState)((0, _configDefault.default));
+    const [filteredResturants, setFilteredResturants] = (0, _react.useState)([]);
     // searchText is a local state variable
     const [searchText, setSearchText] = (0, _react.useState)() //return [variableName, function to updateThe varibale] to create state variable
     ;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    // it call on two parameter one is callback Function and one is dependency array
+    // my useEffect has callback function and when callback function called when searchteaxt changes
+    (0, _react.useEffect)(()=>{
+        console.log("call this when dependency is changed");
+        getResturnats();
+    }, []);
+    const getResturnats = async ()=>{
+        const data = await fetch("http://localhost:8000/");
+        const json = await data.json();
+        console.log(json);
+        setAllResturnats(json);
+        setFilteredResturants(json);
+    };
+    // conditional rendering
+    // if resturant is empty => show shimmer UI
+    // if resturnat has data => actual data UI
+    // not render(early Return )
+    if (!allResturnats) return null;
+    if (filteredResturants?.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+        children: "No Restraunts Match Your Filder "
+    }, void 0, false, {
+        fileName: "src/components/Body.js",
+        lineNumber: 49,
+        columnNumber: 16
+    }, undefined);
+    return filteredResturants.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
+        fileName: "src/components/Body.js",
+        lineNumber: 52,
+        columnNumber: 48
+    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "search-container",
@@ -27542,7 +27603,7 @@ const Body = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 22,
+                        lineNumber: 55,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27550,30 +27611,30 @@ const Body = ()=>{
                         onClick: ()=>{
                             // need to filter the data 
                             // update the state - resturants variable
-                            const data = filterData(searchText, resturants);
-                            setResturants(data);
+                            const data = filterData(searchText, allResturnats);
+                            setFilteredResturants(data);
                         },
                         children: "Search"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 32,
+                        lineNumber: 65,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 21,
+                lineNumber: 54,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "resturant-list",
-                children: resturants.map((resturant)=>{
+                children: filteredResturants.map((resturant)=>{
                     return /*#__PURE__*/ (0, _react.createElement)((0, _resturantCardDefault.default), {
-                        ...resturant.data,
-                        key: resturant.data.id,
+                        ...resturant,
+                        key: resturant._id,
                         __source: {
                             fileName: "src/components/Body.js",
-                            lineNumber: 42,
+                            lineNumber: 76,
                             columnNumber: 28
                         },
                         __self: undefined
@@ -27581,13 +27642,13 @@ const Body = ()=>{
                 })
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 40,
+                lineNumber: 73,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(Body, "XO0F8UFZ2kk5+RzwNiptsK8hyYc=");
+_s(Body, "Lpp3x1dDCzc5u78hLyQgY1xnKG8=");
 _c = Body;
 exports.default = Body;
 var _c;
@@ -27598,139 +27659,109 @@ $RefreshReg$(_c, "Body");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../config":"jtCLN","./ResturantCard":"7LKZL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jtCLN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../config":"jtCLN","./ResturantCard":"7LKZL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Shimmer":"g6ZGj"}],"jtCLN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const resturantList = [
     {
-        type: "resturant",
-        data: {
-            id: "restaurant-1",
-            name: "Restaurant 1",
-            address: "613 Main St, Los Angeles, NY 54788",
-            phone: "664-321-6065",
-            cuisine: "Indian",
-            rating: 2,
-            price_range: "$$$",
-            image: "https://source.unsplash.com/7/800x600"
-        }
+        _id: "restaurant-1",
+        name: "Restaurant 1",
+        address: "613 Main St, Los Angeles, NY 54788",
+        phone: "664-321-6065",
+        cuisine: "Indian",
+        rating: 2,
+        price_range: "$$$",
+        image: "https://source.unsplash.com/7/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            id: "restaurant-2",
-            name: "Restaurant 2",
-            address: "560 Main St, Phoenix, NY 96473",
-            phone: "839-776-8780",
-            cuisine: "Indian",
-            rating: 2,
-            price_range: "$$",
-            image: "https://source.unsplash.com/random/800x600"
-        }
+        _id: "restaurant-2",
+        name: "Restaurant 2",
+        address: "560 Main St, Phoenix, NY 96473",
+        phone: "839-776-8780",
+        cuisine: "Indian",
+        rating: 2,
+        price_range: "$$",
+        image: "https://source.unsplash.com/random/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            id: "restaurant-3",
-            name: "Restaurant 3",
-            address: "152 Main St, Los Angeles, AZ 69945",
-            phone: "487-125-3876",
-            cuisine: "Indian",
-            rating: 3,
-            price_range: "$",
-            image: "https://source.unsplash.com/u/800x600"
-        }
+        _id: "restaurant-3",
+        name: "Restaurant 3",
+        address: "152 Main St, Los Angeles, AZ 69945",
+        phone: "487-125-3876",
+        cuisine: "Indian",
+        rating: 3,
+        price_range: "$",
+        image: "https://source.unsplash.com/u/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            id: "restaurant-4",
-            name: "Restaurant 4",
-            address: "838 Main St, Chicago, TX 45575",
-            phone: "148-407-8317",
-            cuisine: "Mexican",
-            rating: 1,
-            price_range: "$$$$",
-            image: "https://source.unsplash.com/800x600"
-        }
+        _id: "restaurant-4",
+        name: "Restaurant 4",
+        address: "838 Main St, Chicago, TX 45575",
+        phone: "148-407-8317",
+        cuisine: "Mexican",
+        rating: 1,
+        price_range: "$$$$",
+        image: "https://source.unsplash.com/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-5",
-            "name": "Restaurant 5",
-            "address": "143 Main St, Chicago, TX 94536",
-            "phone": "864-920-1928",
-            "cuisine": "Italian",
-            "rating": 4,
-            "price_range": "$",
-            "image": "https://source.unsplash.com/o/800x600"
-        }
+        "_id": "restaurant-5",
+        "name": "Restaurant 5",
+        "address": "143 Main St, Chicago, TX 94536",
+        "phone": "864-920-1928",
+        "cuisine": "Italian",
+        "rating": 4,
+        "price_range": "$",
+        "image": "https://source.unsplash.com/o/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-6",
-            "name": "Restaurant 6",
-            "address": "133 Main St, Los Angeles, CA 10067",
-            "phone": "573-790-8458",
-            "cuisine": "Italian",
-            "rating": 1,
-            "price_range": "$$$",
-            "image": "https://source.unsplash.com/random/800x600"
-        }
+        "_id": "restaurant-6",
+        "name": "Restaurant 6",
+        "address": "133 Main St, Los Angeles, CA 10067",
+        "phone": "573-790-8458",
+        "cuisine": "Italian",
+        "rating": 1,
+        "price_range": "$$$",
+        "image": "https://source.unsplash.com/random/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-7",
-            "name": "Restaurant 7",
-            "address": "966 Main St, Chicago, IL 96456",
-            "phone": "482-194-8408",
-            "cuisine": "Chinese",
-            "rating": 3,
-            "price_range": "$",
-            "image": "https://source.unsplash.com/t/800x600"
-        }
+        "_id": "restaurant-7",
+        "name": "Restaurant 7",
+        "address": "966 Main St, Chicago, IL 96456",
+        "phone": "482-194-8408",
+        "cuisine": "Chinese",
+        "rating": 3,
+        "price_range": "$",
+        "image": "https://source.unsplash.com/t/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-8",
-            "name": "Restaurant 8",
-            "address": "441 Main St, Houston, IL 57169",
-            "phone": "180-118-3732",
-            "cuisine": "American",
-            "rating": 4,
-            "price_range": "$$$$",
-            "image": "https://source.unsplash.com/l/800x600"
-        }
+        "_id": "restaurant-8",
+        "name": "Restaurant 8",
+        "address": "441 Main St, Houston, IL 57169",
+        "phone": "180-118-3732",
+        "cuisine": "American",
+        "rating": 4,
+        "price_range": "$$$$",
+        "image": "https://source.unsplash.com/l/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-9",
-            "name": "Restaurant 9",
-            "address": "793 Main St, Los Angeles, IL 69273",
-            "phone": "196-233-3084",
-            "cuisine": "Chinese",
-            "rating": 2,
-            "price_range": "$$$$",
-            "image": "https://source.unsplash.com/r/800x600"
-        }
+        "_id": "restaurant-9",
+        "name": "Restaurant 9",
+        "address": "793 Main St, Los Angeles, IL 69273",
+        "phone": "196-233-3084",
+        "cuisine": "Chinese",
+        "rating": 2,
+        "price_range": "$$$$",
+        "image": "https://source.unsplash.com/r/800x600"
     },
     {
-        type: "resturant",
-        data: {
-            "id": "restaurant-10",
-            "name": "Restaurant 10",
-            "address": "195 Main St, Los Angeles, NY 11957",
-            "phone": "756-317-2492",
-            "cuisine": "Indian",
-            "rating": 5,
-            "price_range": "$$$",
-            "image": "https://source.unsplash.com/800x600"
-        }
+        "_id": "restaurant-10",
+        "name": "Restaurant 10",
+        "address": "195 Main St, Los Angeles, NY 11957",
+        "phone": "756-317-2492",
+        "cuisine": "Indian",
+        "rating": 5,
+        "price_range": "$$$",
+        "image": "https://source.unsplash.com/800x600"
     }
 ];
 exports.default = resturantList;
@@ -27764,7 +27795,7 @@ const RestrauntCard = ({ name, cuisine, image, address, rating })=>{
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: cuisine
+                children: cuisine.join(", ")
             }, void 0, false, {
                 fileName: "src/components/ResturantCard.js",
                 lineNumber: 12,
@@ -27800,6 +27831,40 @@ var _c;
 $RefreshReg$(_c, "RestrauntCard");
 
   $parcel$ReactRefreshHelpers$195a.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"g6ZGj":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$0b04 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0b04.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const Shimmer = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            "return ",
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: "Shimmer UI lOADING.................."
+            }, void 0, false, {
+                fileName: "src/components/Shimmer.js",
+                lineNumber: 4,
+                columnNumber: 20
+            }, undefined)
+        ]
+    }, void 0, true);
+};
+_c = Shimmer;
+exports.default = Shimmer;
+var _c;
+$RefreshReg$(_c, "Shimmer");
+
+  $parcel$ReactRefreshHelpers$0b04.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
