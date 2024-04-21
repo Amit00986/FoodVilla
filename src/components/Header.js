@@ -1,3 +1,9 @@
+import { useState } from "react";
+
+const loggedInUser = () => {
+    // APi Call to authenticate user
+    return false
+}
 
 const Title = () => (
     <a href='/'>
@@ -9,6 +15,8 @@ const Title = () => (
 );
 
 const Header = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
     return (
         <div className='header'>
             <Title />
@@ -20,6 +28,12 @@ const Header = () => {
                     <li>Cart</li>
                 </ul>
             </div>
+            {
+                // Js Expression only work here there is diff between Expression and statement
+                isLoggedIn ? <button onClick={(e) => setIsLoggedIn(false)}>Logout</button> : <button onClick={(e) => setIsLoggedIn(true)}>Login</button>
+            }
+
+
         </div>
     );
 };
