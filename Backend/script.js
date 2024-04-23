@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
 const axios = require('axios');
-const Restaurant = require('./src/apis/models/index');
 
 // Predefined restaurant names
 const restaurantNames = ["Green Leaf", "Golden Spoon", "Spice Avenue", "Tasty Bites", "Sizzling Grill"];
@@ -35,8 +33,6 @@ const fetchRandomFoodImage = async () => {
     }
 };
 
-
-
 // Function to generate random restaurant data
 const generateRandomRestaurantData = async () => {
     const name = restaurantNames[Math.floor(Math.random() * restaurantNames.length)];
@@ -51,23 +47,15 @@ const generateRandomRestaurantData = async () => {
 // Function to create a specified number of restaurant entries
 const createRestaurantEntries = async (count) => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/ResturantList', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-
         for (let i = 0; i < count; i++) {
             const restaurantData = await generateRandomRestaurantData();
-            const restaurant = new Restaurant(restaurantData);
-            await restaurant.save();
+            await axios.post('http://localhost:8000/create', restaurantData);
             console.log(`Restaurant ${restaurantData.name} created`);
         }
 
         console.log('All restaurant entries created successfully');
     } catch (error) {
-        console.error('Error creating restaurant entries:', error);
-    } finally {
-        mongoose.disconnect();
+        console.error('Error creating restaurant entries:', error.message);
     }
 };
 

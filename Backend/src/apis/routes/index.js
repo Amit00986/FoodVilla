@@ -21,7 +21,24 @@ router.get('/', async (req, res) => {
     } catch (error) {
         throw new Error('route')
     }
+});
 
+router.put('/add/food/:id', async (req, res) => {
+    try {
+        const data = await ResturnatController.addFoodItem(req, res);
+
+    } catch (error) {
+        throw new Error('route')
+    }
+});
+
+
+router.get('/:id', async (req, res) => {
+    try {
+        const data = await ResturnatController.getById(req, res);
+    } catch (error) {
+        throw new Error('route')
+    }
 });
 
 module.exports = router
