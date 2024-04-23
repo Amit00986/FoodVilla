@@ -1,5 +1,22 @@
-
 const mongoose = require('mongoose');
+
+const FoodItemSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    }
+});
 
 const ResturnatSchema = new mongoose.Schema({
     Id: {
@@ -19,11 +36,10 @@ const ResturnatSchema = new mongoose.Schema({
     },
     rating: {
         type: Number
-    }
-
+    },
+    menu: [FoodItemSchema] // Menu field to include array of food items
 });
 
-const Resturnat = new mongoose.model('ResturnatList', ResturnatSchema);
+const Resturnat = mongoose.model('ResturnatList', ResturnatSchema);
 
-
-module.exports = Resturnat
+module.exports = Resturnat;
